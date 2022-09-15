@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+
+<div id="demo">
+<p>Let AJAX change this text.</p>
+<button type="button" onclick="loadDoc()">Change Content</button>
+</div>
+
+<button type="button" onclick="post()">Request data</button>
+
+<p id="demo"></p>
+<p id="request"></p>
+<script>
+function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("demo").innerHTML = this.responseText;
+  }
+  xhttp.open("GET", "ajax_info.txt");
+  xhttp.send();
+}
+
+function post() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("demo").innerHTML = this.responseText;
+  }
+  xhttp.open("POST", "demo_post2.asp");
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("fname=Henry&lname=Ford");
+}
+
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+  const xmlDoc = this.responseXML;
+  const x = xmlDoc.getElementsByTagName("ARTIST");
+  let txt = "";
+  for (let i = 0; i < x.length; i++) {
+    txt = txt + x[i].childNodes[0].nodeValue + "<br>";
+  }
+  document.getElementById("request").innerHTML = txt;
+}
+xhttp.open("GET", "cd_catalog.xml");
+xhttp.send();
+</script>
+
+</body>
+</html>

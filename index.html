@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>JavaScript Alert</h2>
+    Alert Box <br/>
+    <button onclick="alertBox()">Try it</button><br/><br/>
+    Confirm Box<br/>
+    <button onclick="confirmBox()">Try it</button>
+    <p id="confirmBoxText"></p>
+    Prompt Box<br/>
+    <button onclick="promptBox()">Try it</button>
+    <p id="promptBoxText"></p>
+    <p>Line-breaks in a popup box.</p>
+    <button onclick="alert('Hello\nHow are you?')">Try it</button>
+
+    <script>
+        function alertBox() {
+            alert("I am an alert box!");
+        }
+
+        function confirmBox() {
+            var txt;
+            if (confirm("Press a button!")) {
+                txt = "You pressed OK!";
+            } else {
+                txt = "You pressed Cancel!";
+            }
+            document.getElementById("confirmBoxText").innerHTML = txt;
+        }
+
+        function promptBox() {
+            let text;
+            let person = prompt("Please enter your name:", "Harry Potter");
+            if (person == null || person == "") {
+                text = "User cancelled the prompt.";
+            } else {
+                text = "Hello " + person + "! How are you today?";
+            }
+            document.getElementById("promptBoxText").innerHTML = text;
+        }
+    </script>
+</body>
+
+</html>
